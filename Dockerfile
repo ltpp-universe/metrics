@@ -10,8 +10,6 @@ RUN chmod +x /metrics/source/app/action/index.mjs \
   # Install latest chrome dev package, fonts to support major charsets and skip chromium download on puppeteer install
   # Based on https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
   && apt-get update \
-  && apt-get install -y ruby-full git g++ cmake pkg-config libssl-dev xz-utils \
-  && gem install licensed \
   && apt-get install -y wget gnupg ca-certificates libgconf-2-4 \
   && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
@@ -21,7 +19,7 @@ RUN chmod +x /metrics/source/app/action/index.mjs \
   && apt-get install -y curl unzip \
   && curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL=/usr/local sh \
   # Install ruby to support github licensed gem
-  && apt-get install -y ruby-full git g++ cmake pkg-config libssl-dev \
+  && apt-get install -y ruby-full git g++ cmake pkg-config libssl-dev xz-utils \
   && gem install licensed \
   # Install python for node-gyp
   && apt-get install -y python3 \
